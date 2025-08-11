@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Engineering Scavenger Hunt</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Engineering Scavenger Hunt</h1>
+      <p>Solve 30 technical riddles. 1 minute per question. Team registration required.</p>
+    </header>
+
+    <main id="main">
+      <!-- Registration -->
+      <section id="registration" class="card">
+        <h2>Team Registration & Login</h2>
+        <form id="regForm">
+          <label>Gmail ID (required)<input id="email" type="email" placeholder="team@gmail.com" required></label>
+          <label>Team Name<input id="team_name" required></label>
+
+          <fieldset>
+            <legend>Team Leader</legend>
+            <input id="leader_name" placeholder="Leader full name" required>
+            <input id="leader_roll" placeholder="Leader roll no" required>
+            <input id="leader_branch" placeholder="Branch (e.g. ECE)" required>
+            <input id="leader_year" placeholder="Year (e.g. 3rd)" required>
+          </fieldset>
+
+          <fieldset>
+            <legend>Member 1</legend>
+            <input id="m1_name" placeholder="Member 1 name" required>
+            <input id="m1_roll" placeholder="Member 1 roll no" required>
+            <input id="m1_branch" placeholder="Branch" required>
+            <input id="m1_year" placeholder="Year" required>
+          </fieldset>
+
+          <fieldset>
+            <legend>Member 2</legend>
+            <input id="m2_name" placeholder="Member 2 name" required>
+            <input id="m2_roll" placeholder="Member 2 roll no" required>
+            <input id="m2_branch" placeholder="Branch" required>
+            <input id="m2_year" placeholder="Year" required>
+          </fieldset>
+
+          <button type="submit" class="btn">Start Game</button>
+        </form>
+        <p class="note">You will be timed from the first question. Make sure all fields are correct.</p>
+      </section>
+
+      <!-- Game -->
+      <section id="game" class="card hidden">
+        <div class="topbar">
+          <div id="teamInfo"></div>
+          <div id="stageTimer">Total Time: <span id="totalTime">0</span>s</div>
+        </div>
+        <div id="riddleBox">
+          <h3 id="qnum">Question 1 / 30</h3>
+          <p id="questionText"></p>
+          <div class="timer">Time left: <span id="qTimer">60</span>s</div>
+          <input id="answer" placeholder="Type answer here">
+          <div class="controls">
+            <button id="submitBtn" class="btn">Submit</button>
+            <button id="hintBtn" class="btn ghost">Hint (-10s)</button>
+          </div>
+          <p id="feedback" class="feedback"></p>
+        </div>
+      </section>
+
+      <!-- Completion / Leaderboard -->
+      <section id="done" class="card hidden">
+        <h2>Congratulations!</h2>
+        <p>Your total time: <strong id="finalTime"></strong> seconds</p>
+        <button id="viewLeaderboard" class="btn">View Leaderboard</button>
+      </section>
+
+      <section id="leaderboard" class="card hidden">
+        <h2>Leaderboard</h2>
+        <table id="leaderTable">
+          <thead><tr><th>Rank</th><th>Team</th><th>Time (s)</th><th>Members</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="notes" class="card">
+        <h3>Notes & Deployment</h3>
+        <p>This demo uses Firebase Firestore in app.js. You must add your Firebase config in <code>app.js</code> and enable Firestore for saving team results.</p>
+        <p>See README.md for step-by-step deployment instructions (Firebase Hosting).</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
